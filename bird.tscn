@@ -23,14 +23,19 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a58o0"]
+radius = 19.0
+height = 52.0
 
 [node name="bird" type="CharacterBody2D"]
 script = ExtResource("1_fl7o2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3.57628e-07)
+scale = Vector2(1, 1.05556)
 sprite_frames = SubResource("SpriteFrames_putj0")
 animation = &"flying"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_a58o0")
-debug_color = Color(0, 0.6, 0.701961, 1)
+debug_color = Color(0, 0.6, 0.701961, 0.607843)
