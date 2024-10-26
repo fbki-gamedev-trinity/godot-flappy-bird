@@ -1,7 +1,7 @@
 extends Area2D
 
-signal hit
-signal scored
+signal hit #столкновение
+signal scored # проход через трубы
 
 func _on_body_entered(body):
 	hit.emit()
