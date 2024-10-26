@@ -4,16 +4,16 @@
 [ext_resource type="Script" path="res://pipe.gd" id="1_labnm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_deir5"]
-size = Vector2(77, 35)
+size = Vector2(76, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stu4n"]
-size = Vector2(72, 527)
+size = Vector2(70, 527)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf08l"]
-size = Vector2(77, 36)
+size = Vector2(76, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq717"]
-size = Vector2(72, 526)
+size = Vector2(70, 527)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0b0o"]
 size = Vector2(20, 201)
@@ -26,7 +26,7 @@ texture = ExtResource("1_auomc")
 offset = Vector2(0, 380)
 
 [node name="CollisionShape2D1" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 118.5)
+position = Vector2(0, 118.5)
 shape = SubResource("RectangleShape2D_deir5")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -39,11 +39,11 @@ offset = Vector2(0, -380)
 flip_v = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -118)
+position = Vector2(0, -118)
 shape = SubResource("RectangleShape2D_nf08l")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(0, -399)
+position = Vector2(0, -398.5)
 shape = SubResource("RectangleShape2D_vq717")
 
 [node name="ScoreArea" type="Area2D" parent="."]
