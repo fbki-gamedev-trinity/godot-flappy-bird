@@ -48,7 +48,7 @@ func start_game(): #начало игры
 	$PipeTimer.start()
 
 func check_top(): #проверка на столкновение с верхом
-	if $Bird.position.y < 0: #если птица достигла верхнего края экрана
+	if $Bird.position.y < 0 + 38: #если птица достигла верхнего края экрана
 		$Bird.falling = true #считаем, что она упала
 		stop_game() #остановка игры
 		
