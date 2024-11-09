@@ -39,9 +39,21 @@ text = "SCORE: 0"
 [node name="GameOver" parent="." instance=ExtResource("6_p4i7w")]
 
 [node name="MainMenu" type="MarginContainer" parent="."]
-offset_right = 863.0
-offset_bottom = 895.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -431.5
+offset_top = -447.5
+offset_right = 431.5
+offset_bottom = 447.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
 
 [connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
 [connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
