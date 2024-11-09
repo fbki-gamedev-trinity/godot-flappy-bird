@@ -13,6 +13,8 @@ var pipes : Array # массив труб на экране
 const PIPE_X : int = 100 #
 const PIPE_Y : int = 200 
 
+var last_pipe_position_y : int = 0 # последняя высота верхней трубы
+
 func _ready(): #запуск
 	screen_size = get_window().size #получение размера окна
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
@@ -32,12 +34,12 @@ func new_game(): #новая игра, назначение стартовых �
 
 func _input(event): #отлов события
 	if game_over == false: #если игра не закончена
-		if event is InputEventMouseButton: #если событие является кликом по мыши
-			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed: #если зажата левая клавиша мыши
-				if game_running == false: #если игра не идёт
+		# Обработка кликов мыши
+		if Input.is_action_just_pressed("click") or Input.is_action_just_pressed("ui_accept"): # (удалить первое условие) если зажата левая кнопка мыши
+				if game_running == false: #если игра не началась
 					start_game() #запуск игры
 				else:
-					if $Bird.flying: #если птица летит (значит, игра идёт)
+					if $Bird.flying: #если птица летит (игра идёт)
 						$Bird.flap() #вызов взмаха крыльями
 						check_top() #проверка на столкновение с верхом
 						
@@ -48,7 +50,7 @@ func start_game(): #начало игры
 	$PipeTimer.start()
 
 func check_top(): #проверка на столкновение с верхом
-	if $Bird.position.y < 0 + 38: #если птица достигла верхнего края экрана
+	if $Bird.position.y < 0+38: #если птица достигла верхнего края экрана
 		$Bird.falling = true #считаем, что она упала
 		stop_game() #остановка игры
 		
@@ -82,6 +84,18 @@ func generate_pipes():
 	var pipe = pipe_scene.instantiate() # новая труба
 	pipe.position.x = screen_size.x + PIPE_X
 	pipe.position.y = (screen_size.y - ground_height) / 2  + randi_range(-PIPE_Y, PIPE_Y)
+	
+	## Генерация случайной высоты для верхней трубы, но с учетом ограничений
+	#var new_pipe_y = (screen_size.y - ground_height) / 2 + randi_range(-PIPE_Y, PIPE_Y)
+	#
+	## Устанавливаем минимальное расстояние между трубами по вертикали
+	## Если разница слишком велика, генерируем более "плавный" переход
+	#while abs(new_pipe_y - last_pipe_position_y) < PIPE_Y * 1.5:
+		#new_pipe_y = (screen_size.y - ground_height) / 2 + randi_range(-PIPE_Y, PIPE_Y)
+#
+	#pipe.position.y = new_pipe_y
+	#last_pipe_position_y = new_pipe_y # Обновляем последнюю позицию для следующей трубы
+	
 	pipe.hit.connect(bird_hit)
 	pipe.scored.connect(scored)
 	add_child(pipe) #добавляем на сцену
