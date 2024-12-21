@@ -1,19 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgsgm24kp7lf8"]
+[gd_scene load_steps=6 format=3 uid="uid://dgsgm24kp7lf8"]
 
-[ext_resource type="Texture2D" uid="uid://br14hf5rmaosc" path="res://assets/pipe.png" id="1_auomc"]
+[ext_resource type="Texture2D" uid="uid://bsykewngvfky6" path="res://assets/pipe.png" id="1_auomc"]
 [ext_resource type="Script" path="res://pipe.gd" id="1_labnm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_deir5"]
-size = Vector2(76, 35)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stu4n"]
-size = Vector2(70, 527)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf08l"]
-size = Vector2(76, 34)
+size = Vector2(80, 578)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq717"]
-size = Vector2(70, 527)
+size = Vector2(81, 578)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0b0o"]
 size = Vector2(20, 201)
@@ -22,34 +16,28 @@ size = Vector2(20, 201)
 script = ExtResource("1_labnm")
 
 [node name="Lower" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
 texture = ExtResource("1_auomc")
 offset = Vector2(0, 380)
 
-[node name="CollisionShape2D1" type="CollisionShape2D" parent="."]
-position = Vector2(0, 118.5)
-shape = SubResource("RectangleShape2D_deir5")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, 399.5)
+position = Vector2(0, 389)
 shape = SubResource("RectangleShape2D_stu4n")
 
 [node name="Upper" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
 texture = ExtResource("1_auomc")
 offset = Vector2(0, -380)
 flip_v = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(0, -118)
-shape = SubResource("RectangleShape2D_nf08l")
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(0, -398.5)
+position = Vector2(-0.5, -390)
 shape = SubResource("RectangleShape2D_vq717")
 
 [node name="ScoreArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
-position = Vector2(49, -0.5)
+position = Vector2(50, -0.5)
 shape = SubResource("RectangleShape2D_v0b0o")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
