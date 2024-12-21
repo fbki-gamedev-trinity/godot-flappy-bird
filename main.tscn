@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://btwblqur27frx"]
+[gd_scene load_steps=8 format=3 uid="uid://btwblqur27frx"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_h22i1"]
 [ext_resource type="Texture2D" uid="uid://d0xw3cvngyx7c" path="res://assets/bg.jpg" id="1_tk4ya"]
 [ext_resource type="PackedScene" uid="uid://dgsgm24kp7lf8" path="res://pipe.tscn" id="2_dy5fi"]
 [ext_resource type="PackedScene" uid="uid://bpwb746d701k6" path="res://bird.tscn" id="3_wumde"]
+[ext_resource type="Texture2D" uid="uid://b7fqf46ic1gvo" path="res://assets/back.png" id="4_562jn"]
 [ext_resource type="PackedScene" uid="uid://cwlp4iw2luwx" path="res://ground.tscn" id="4_nrlao"]
 [ext_resource type="PackedScene" uid="uid://kyg3q68i28kj" path="res://game_over.tscn" id="6_p4i7w"]
 
@@ -12,14 +13,20 @@ script = ExtResource("1_h22i1")
 pipe_scene = ExtResource("2_dy5fi")
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.53191, 0.751491)
 texture = ExtResource("1_tk4ya")
 offset = Vector2(282, 503)
+
+[node name="Back" type="Sprite2D" parent="."]
+position = Vector2(432, 380)
+texture = ExtResource("4_562jn")
 
 [node name="Bird" parent="." instance=ExtResource("3_wumde")]
 
 [node name="Ground" parent="." instance=ExtResource("4_nrlao")]
 z_index = 1
+position = Vector2(0, 881)
 
 [node name="PipeTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -39,6 +46,7 @@ text = "SCORE: 0"
 [node name="GameOver" parent="." instance=ExtResource("6_p4i7w")]
 
 [node name="MainMenu" type="MarginContainer" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
